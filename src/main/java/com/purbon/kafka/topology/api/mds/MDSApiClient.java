@@ -102,7 +102,7 @@ public class MDSApiClient {
 
   private Map<String, Object> buildResourceScope(
       String resourceType, String name, String patternType) {
-    Map<String, Map<String, String>> clusters = getClusterIds();
+    Map<String, Map<String, String>> clusters = getKafkaClusterIds();
     return buildResourceScope(resourceType, name, patternType, clusters);
   }
 
@@ -137,7 +137,7 @@ public class MDSApiClient {
     List<String> roles = new ArrayList<>();
 
     try {
-      postRequest.setEntity(new StringEntity(JSON.asString(getClusterIds())));
+      postRequest.setEntity(new StringEntity(JSON.asString(getKafkaClusterIds())));
       String stringResponse = post(postRequest);
       if (!stringResponse.isEmpty()) {
         roles = JSON.toArray(stringResponse);
@@ -147,6 +147,15 @@ public class MDSApiClient {
     }
 
     return roles;
+  }
+
+  public Map<String, Map<String, String>> getKafkaClusterIds() {
+    HashMap<String, String> clusterIds = new HashMap<>();
+    if (!kafkaClusterID.isEmpty()) clusterIds.put(KAFKA_CLUSTER_ID_LABEL, kafkaClusterID);
+
+    Map<String, Map<String, String>> clusters = new HashMap<>();
+    clusters.put("clusters", clusterIds);
+    return clusters;
   }
 
   public Map<String, Map<String, String>> getClusterIds() {
