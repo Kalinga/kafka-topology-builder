@@ -6,7 +6,6 @@ import static com.purbon.kafka.topology.api.mds.MDSApiClient.SCHEMA_REGISTRY_CLU
 import com.purbon.kafka.topology.api.mds.MDSApiClient;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.function.BiConsumer;
 
 public class AdminRoleRunner {
 
@@ -15,29 +14,27 @@ public class AdminRoleRunner {
   private final MDSApiClient client;
   private Map<String, Object> scope;
 
-
   public AdminRoleRunner(String principal, String role, MDSApiClient client) {
-   this.principal = principal;
-   this.role = role;
-   this.client = client;
+    this.principal = principal;
+    this.role = role;
+    this.client = client;
   }
 
   public AdminRoleRunner forSchemaRegistry() {
     Map<String, String> clusterIds = new HashMap<>();
-    clusterIds.put(KAFKA_CLUSTER_ID_LABEL,
-        client.getClusterIds().get("clusters").get(KAFKA_CLUSTER_ID_LABEL));
-    clusterIds.put(SCHEMA_REGISTRY_CLUSTER_ID_LABEL,
+    clusterIds.put(
+        KAFKA_CLUSTER_ID_LABEL, client.getClusterIds().get("clusters").get(KAFKA_CLUSTER_ID_LABEL));
+    clusterIds.put(
+        SCHEMA_REGISTRY_CLUSTER_ID_LABEL,
         client.getClusterIds().get("clusters").get(SCHEMA_REGISTRY_CLUSTER_ID_LABEL));
 
     Map<String, Map<String, String>> clusters = new HashMap<>();
     clusters.put("clusters", clusterIds);
-    scope = client.buildResourceScope("ALL",  "Cluster", "LITERAL", clusters);
+    scope = client.buildResourceScope("ALL", "Cluster", "LITERAL", clusters);
     return this;
   }
 
-
   public void apply() {
-    client
-        .bind(principal, role, scope);
+    client.bind(principal, role, scope);
   }
 }

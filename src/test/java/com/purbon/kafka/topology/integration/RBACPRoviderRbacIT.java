@@ -25,7 +25,6 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
-import java.util.concurrent.ExecutionException;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -137,7 +136,7 @@ public class RBACPRoviderRbacIT extends MDSBaseTest {
   }
 
   @Test
-  public void schemaRegistryAclsCreation() throws ExecutionException, InterruptedException {
+  public void schemaRegistryAclsCreation() {
     Project project = new Project();
 
     Topology topology = new Topology();

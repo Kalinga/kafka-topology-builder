@@ -93,22 +93,24 @@ public class MDSApiClient {
       e.printStackTrace();
     }
   }
-  public void bind(String principal, String role, String resource, String resourceType, String patternType) {
+
+  public void bind(
+      String principal, String role, String resource, String resourceType, String patternType) {
     Map<String, Object> scope = buildResourceScope(resourceType, resource, patternType);
     bind(principal, role, scope);
   }
 
-
-  private Map<String, Object> buildResourceScope(String resourceType, String name, String patternType) {
+  private Map<String, Object> buildResourceScope(
+      String resourceType, String name, String patternType) {
     Map<String, Map<String, String>> clusters = getClusterIds();
     return buildResourceScope(resourceType, name, patternType, clusters);
   }
 
-  public Map<String, Object> buildResourceScope(String resourceType,
+  public Map<String, Object> buildResourceScope(
+      String resourceType,
       String name,
       String patternType,
-      Map<String, Map<String, String>> clusters)
-  {
+      Map<String, Map<String, String>> clusters) {
 
     Map<String, String> resource = new HashMap<>();
     resource.put("resourceType", resourceType);
@@ -150,7 +152,8 @@ public class MDSApiClient {
   public Map<String, Map<String, String>> getClusterIds() {
     HashMap<String, String> clusterIds = new HashMap<>();
     if (!kafkaClusterID.isEmpty()) clusterIds.put(KAFKA_CLUSTER_ID_LABEL, kafkaClusterID);
-    if (!schemaRegistryClusterID.isEmpty()) clusterIds.put(SCHEMA_REGISTRY_CLUSTER_ID_LABEL, schemaRegistryClusterID);
+    if (!schemaRegistryClusterID.isEmpty())
+      clusterIds.put(SCHEMA_REGISTRY_CLUSTER_ID_LABEL, schemaRegistryClusterID);
     // clusterIds.put("connect-cluster", "connect-cluster");
     // clusterIds.put("ksql-cluster", "ksqlCluster");
 
