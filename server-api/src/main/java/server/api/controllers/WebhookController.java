@@ -10,7 +10,7 @@ import io.micronaut.http.annotation.Post;
 import java.io.IOException;
 import java.nio.file.Paths;
 import javax.inject.Inject;
-import server.api.models.GithubHook;
+import server.api.model.GithubHook;
 import server.api.services.GitManager;
 import server.api.services.KafkaTopologyBuilderService;
 

@@ -9,7 +9,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import org.junit.jupiter.api.Test;
 import java.util.Map;
-import server.api.models.TopologyDeco;
+import server.api.model.TopologyDeco;
 
 @MicronautTest
 public class TopicControllerTest extends BaseControllerTest {

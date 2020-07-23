@@ -18,7 +18,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import javax.inject.Singleton;
-import server.api.models.TopologyDeco;
+import server.api.model.TopologyDeco;
 
 @Singleton
 public class KafkaTopologyBuilderService {

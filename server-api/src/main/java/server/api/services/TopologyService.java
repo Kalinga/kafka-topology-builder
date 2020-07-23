@@ -1,7 +1,7 @@
 package server.api.services;
 
 import java.util.List;
-import server.api.models.TopologyDeco;
+import server.api.model.TopologyDeco;
 
 public interface TopologyService {
 

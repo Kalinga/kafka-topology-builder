@@ -9,7 +9,7 @@ import javax.inject.Inject;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import server.api.MongoContainer;
-import server.api.models.TopologyDeco;
+import server.api.model.TopologyDeco;
 import server.api.services.TopologyService;
 
 public class BaseControllerTest {

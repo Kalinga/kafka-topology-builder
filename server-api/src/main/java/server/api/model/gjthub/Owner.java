@@ -1,4 +1,4 @@
-package server.api.models.gjthub;
+package server.api.model.gjthub;
 
 public class Owner {
 

@@ -1,6 +1,6 @@
-package server.api.models;
+package server.api.model;
 
-import server.api.models.gjthub.Repository;
+import server.api.model.gjthub.Repository;
 
 public class GithubHook {
 

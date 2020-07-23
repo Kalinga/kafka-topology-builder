@@ -1,4 +1,4 @@
-package server.api.models;
+package server.api.model;
 
 import com.purbon.kafka.topology.model.Impl.ProjectImpl;
 import com.purbon.kafka.topology.model.Impl.TopicImpl;

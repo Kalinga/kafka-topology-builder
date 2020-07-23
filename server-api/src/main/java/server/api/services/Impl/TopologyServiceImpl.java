@@ -22,8 +22,8 @@ import org.bson.codecs.configuration.CodecRegistry;
 import org.bson.codecs.pojo.ClassModel;
 import org.bson.codecs.pojo.PojoCodecProvider;
 import server.api.helpers.OptionalPropertyCodecProvider;
-import server.api.models.TopologyCatalog;
-import server.api.models.TopologyDeco;
+import server.api.model.TopologyCatalog;
+import server.api.model.TopologyDeco;
 import server.api.services.TopologyService;
 
 import static com.mongodb.client.model.Filters.*;

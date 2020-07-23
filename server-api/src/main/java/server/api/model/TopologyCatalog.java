@@ -1,4 +1,4 @@
-package server.api.models;
+package server.api.model;
 
 import java.util.ArrayList;
 import java.util.HashMap;

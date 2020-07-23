@@ -7,7 +7,7 @@ import io.micronaut.http.HttpResponse;
 import io.micronaut.http.HttpStatus;
 import io.micronaut.test.annotation.MicronautTest;
 import org.junit.jupiter.api.Test;
-import server.api.models.TopologyDeco;
+import server.api.model.TopologyDeco;
 
 @MicronautTest
 public class TopologyControllerTest extends BaseControllerTest {

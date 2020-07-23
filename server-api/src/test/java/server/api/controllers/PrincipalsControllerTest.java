@@ -13,7 +13,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import org.junit.jupiter.api.Test;
-import server.api.models.TopologyDeco;
+import server.api.model.TopologyDeco;
 
 @MicronautTest
 public class PrincipalsControllerTest extends BaseControllerTest {

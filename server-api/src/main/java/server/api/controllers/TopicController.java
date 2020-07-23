@@ -14,7 +14,7 @@ import java.util.HashMap;
 import java.util.Optional;
 import javax.inject.Inject;
 import javax.validation.constraints.NotNull;
-import server.api.models.TopologyDeco;
+import server.api.model.TopologyDeco;
 import server.api.services.TopologyService;
 
 @Controller( value = "/topologies/{team}/projects/{projectName}/topics")

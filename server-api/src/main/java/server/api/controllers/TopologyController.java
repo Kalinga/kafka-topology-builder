@@ -12,7 +12,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import javax.inject.Inject;
-import server.api.models.TopologyDeco;
+import server.api.model.TopologyDeco;
 import server.api.services.KafkaTopologyBuilderService;
 import server.api.services.TopologyService;
 

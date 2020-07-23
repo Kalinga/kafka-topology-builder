@@ -11,7 +11,7 @@ import io.micronaut.http.annotation.PathVariable;
 import io.micronaut.http.annotation.Post;
 import java.util.List;
 import javax.inject.Inject;
-import server.api.models.TopologyDeco;
+import server.api.model.TopologyDeco;
 import server.api.services.TopologyService;
 
 @Controller( value = "/topologies/{team}/projects")
