@@ -8,6 +8,11 @@ public class MongoContainer extends GenericContainer {
   public MongoContainer() {
     super("bitnami/mongodb:latest");
     addFixedExposedPort(27017, 27017);
+  }
+
+  @Override
+  public void start() {
+    super.start();
     waitingFor(Wait.forListeningPort());
   }
 }

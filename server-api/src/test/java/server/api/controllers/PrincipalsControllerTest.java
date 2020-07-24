@@ -12,11 +12,19 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import server.api.model.TopologyDeco;
 
 @MicronautTest
 public class PrincipalsControllerTest extends BaseControllerTest {
+
+  private String accessToken;
+
+  @BeforeEach
+  public void before() {
+    accessToken = authenticate();
+  }
 
   @Test
   void testCreateOKConsumerResponse() {
@@ -25,7 +33,8 @@ public class PrincipalsControllerTest extends BaseControllerTest {
     addProject("bar", "p2");
 
     HttpRequest request = HttpRequest
-        .POST("/topologies/bar/projects/p2/principals/consumers/bar", "");
+        .POST("/topologies/bar/projects/p2/principals/consumers/bar", "")
+        .bearerAuth(accessToken);
 
     TopologyDeco topology = client
         .toBlocking()
@@ -45,7 +54,8 @@ public class PrincipalsControllerTest extends BaseControllerTest {
     addProject("foo", "p1");
 
     HttpRequest request = HttpRequest
-        .POST("/topologies/foo/projects/p1/principals/producers/bar", "");
+        .POST("/topologies/foo/projects/p1/principals/producers/bar", "")
+        .bearerAuth(accessToken);
 
     TopologyDeco topology = client
         .toBlocking()
@@ -69,7 +79,8 @@ public class PrincipalsControllerTest extends BaseControllerTest {
     topics.put("write", Collections.singletonList("topicB"));
 
     HttpRequest request = HttpRequest
-        .POST("/topologies/streams/projects/p1/principals/streams/bar", topics);
+        .POST("/topologies/streams/projects/p1/principals/streams/bar", topics)
+        .bearerAuth(accessToken);
 
     TopologyDeco topology = client
         .toBlocking()
@@ -98,7 +109,8 @@ public class PrincipalsControllerTest extends BaseControllerTest {
     Map<String, Object> config = new HashMap<>();
 
     HttpRequest request = HttpRequest
-        .POST("/topologies/connector/projects/p1/principals/connectors/bar", config);
+        .POST("/topologies/connector/projects/p1/principals/connectors/bar", config)
+        .bearerAuth(accessToken);
 
     TopologyDeco topology = client
         .toBlocking()
@@ -131,7 +143,8 @@ public class PrincipalsControllerTest extends BaseControllerTest {
     config.put("topics", topics);
 
     HttpRequest request = HttpRequest
-        .POST("/topologies/connconfig/projects/p1/principals/connectors/bar", config);
+        .POST("/topologies/connconfig/projects/p1/principals/connectors/bar", config)
+        .bearerAuth(accessToken);
 
     TopologyDeco topology = client
         .toBlocking()

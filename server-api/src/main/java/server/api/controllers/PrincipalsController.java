@@ -12,6 +12,8 @@ import io.micronaut.http.annotation.Body;
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.PathVariable;
 import io.micronaut.http.annotation.Post;
+import io.micronaut.security.annotation.Secured;
+import io.micronaut.security.rules.SecurityRule;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
@@ -20,6 +22,7 @@ import javax.validation.constraints.NotNull;
 import server.api.model.TopologyDeco;
 import server.api.services.TopologyService;
 
+@Secured(SecurityRule.IS_AUTHENTICATED)
 @Controller( value = "/topologies/{team}/projects/{projectName}/principals")
 public class PrincipalsController {
 

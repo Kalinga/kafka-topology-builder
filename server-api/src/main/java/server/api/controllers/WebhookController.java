@@ -7,6 +7,8 @@ import io.micronaut.http.HttpStatus;
 import io.micronaut.http.MediaType;
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Post;
+import io.micronaut.security.annotation.Secured;
+import io.micronaut.security.rules.SecurityRule;
 import java.io.IOException;
 import java.nio.file.Paths;
 import javax.inject.Inject;
@@ -14,6 +16,7 @@ import server.api.model.GithubHook;
 import server.api.services.GitManager;
 import server.api.services.KafkaTopologyBuilderService;
 
+@Secured(SecurityRule.IS_ANONYMOUS)
 @Controller("/webhook")
 public class WebhookController {
 

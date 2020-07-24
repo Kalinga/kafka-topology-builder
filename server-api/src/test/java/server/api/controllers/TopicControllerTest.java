@@ -7,12 +7,20 @@ import io.micronaut.http.HttpRequest;
 import io.micronaut.test.annotation.MicronautTest;
 import java.util.Collections;
 import java.util.HashMap;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.util.Map;
 import server.api.model.TopologyDeco;
 
 @MicronautTest
 public class TopicControllerTest extends BaseControllerTest {
+
+  private String accessToken;
+
+  @BeforeEach
+  public void before() {
+    accessToken = authenticate();
+  }
 
   @Test
   void testCreateOKResponse() {
@@ -21,7 +29,8 @@ public class TopicControllerTest extends BaseControllerTest {
     addProject("foo", "p1");
 
     HttpRequest request = HttpRequest
-        .POST("/topologies/foo/projects/p1/topics/t1", Collections.EMPTY_MAP);
+        .POST("/topologies/foo/projects/p1/topics/t1", Collections.EMPTY_MAP)
+        .bearerAuth(accessToken);
 
     TopologyDeco topology = client
         .toBlocking()
@@ -44,7 +53,8 @@ public class TopicControllerTest extends BaseControllerTest {
     config.put("num_partitions", 2);
 
     HttpRequest request = HttpRequest
-        .POST("/topologies/foo/projects/p1/topics/t1", config);
+        .POST("/topologies/foo/projects/p1/topics/t1", config)
+        .bearerAuth(accessToken);
 
     TopologyDeco topology = client
         .toBlocking()
